@@ -119,6 +119,15 @@ const authSlice = createSlice({
     setToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
       state.isAuthenticated = true;
+      // 從localStorage獲取用戶資料
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        try {
+          state.user = JSON.parse(userStr);
+        } catch (error) {
+          console.error('Failed to parse user data from localStorage:', error);
+        }
+      }
     },
   },
   extraReducers: (builder) => {
