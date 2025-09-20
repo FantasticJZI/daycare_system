@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Box, Paper, TextField, Button, Typography, Alert, CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+import { RootState, AppDispatch } from '../../store/store';
 import { login, clearError } from '../../store/slices/authSlice';
 
 const Login: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { loading, error } = useSelector((state: RootState) => state.auth);
   
   const [formData, setFormData] = useState({

@@ -2,12 +2,12 @@ import React from 'react';
 import { Box, Drawer, AppBar, Toolbar, Typography, List, ListItem, ListItemIcon, ListItemText, IconButton, Avatar, Menu, MenuItem } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store/store';
+import { RootState, AppDispatch } from '../../store/store';
 import { logout } from '../../store/slices/authSlice';
 import {
   Dashboard as DashboardIcon,
   People as PeopleIcon,
-  Health as HealthIcon,
+  LocalHospital as HealthIcon,
   Schedule as ScheduleIcon,
   Event as EventIcon,
   Person as PersonIcon,
@@ -27,7 +27,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { user } = useSelector((state: RootState) => state.auth);
   
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -40,8 +40,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setAnchorEl(null);
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    await dispatch(logout());
     handleProfileMenuClose();
   };
 

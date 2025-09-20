@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Box, Grid, Card, CardContent, Typography, Paper } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store/store';
+import { RootState, AppDispatch } from '../../store/store';
 import { fetchElderlyStats } from '../../store/slices/elderlySlice';
 
 const Dashboard: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { user } = useSelector((state: RootState) => state.auth);
   const { stats } = useSelector((state: RootState) => state.elderly);
 

@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Chip, IconButton } from '@mui/material';
 import { Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store/store';
+import { RootState, AppDispatch } from '../../store/store';
 import { fetchElderly } from '../../store/slices/elderlySlice';
 
 const ElderlyList: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { elderly, loading, pagination } = useSelector((state: RootState) => state.elderly);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const ElderlyList: React.FC = () => {
               <TableRow key={elder._id}>
                 <TableCell>{elder.name}</TableCell>
                 <TableCell>{elder.idNumber}</TableCell>
-                <TableCell>{elder.age}</TableCell>
+                <TableCell>{new Date().getFullYear() - new Date(elder.birthDate).getFullYear()}</TableCell>
                 <TableCell>{elder.gender === 'male' ? '男' : '女'}</TableCell>
                 <TableCell>
                   <Chip
