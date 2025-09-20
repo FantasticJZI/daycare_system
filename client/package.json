@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "日照系統前端應用",
   "private": true,
+  "homepage": "https://fantasticjzi.github.io/daycare_system",
   "dependencies": {
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.42",
