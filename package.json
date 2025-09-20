@@ -1,0 +1,29 @@
+{
+  "name": "daycare-management-system",
+  "version": "1.0.0",
+  "description": "日照系統 - 長者日間照顧中心資訊管理平台",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "mobile": "cd mobile && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install && cd ../mobile && npm install",
+    "start": "cd server && npm start"
+  },
+  "keywords": [
+    "daycare",
+    "elderly-care",
+    "healthcare",
+    "management-system",
+    "taiwan",
+    "long-term-care"
+  ],
+  "author": "JZI",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
