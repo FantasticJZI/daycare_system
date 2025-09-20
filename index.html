@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日照系統 - 長者日間照顧中心</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        .logo {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .status {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #2e7d32;
+        }
+        .demo-info {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #e65100;
+        }
+        .links {
+            margin: 30px 0;
+        }
+        .links a {
+            display: inline-block;
+            background: #1976d2;
+            color: white;
+            padding: 12px 24px;
+            margin: 8px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .links a:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #1976d2;
+        }
+        .feature h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .loading {
+            display: none;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🏥</div>
+        <h1>日照系統</h1>
+        <p class="subtitle">長者日間照顧中心資訊管理平台</p>
+        
+        <div class="status">
+            <h3>✅ 網站部署成功！</h3>
+            <p>GitHub Pages部署正常，系統已準備就緒</p>
+        </div>
+
+        <div class="demo-info">
+            <h3>🎯 演示模式</h3>
+            <p><strong>帳號：</strong> admin@daycare.com</p>
+            <p><strong>密碼：</strong> admin123</p>
+            <p><em>系統將自動進入演示模式</em></p>
+        </div>
+
+        <div class="links">
+            <a href="/daycare_system/">🚀 進入系統</a>
+            <a href="/daycare_system/test.html">🧪 測試頁面</a>
+            <a href="https://github.com/FantasticJZI/daycare_system">📁 源代碼</a>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>👥 長者管理</h3>
+                <p>完整的長者資料管理和照護評估</p>
+            </div>
+            <div class="feature">
+                <h3>🏥 健康監控</h3>
+                <p>生命徵象記錄和健康數據追蹤</p>
+            </div>
+            <div class="feature">
+                <h3>📅 出勤系統</h3>
+                <p>智能打卡和出勤統計分析</p>
+            </div>
+            <div class="feature">
+                <h3>🎨 活動規劃</h3>
+                <p>豐富的活動安排和參與管理</p>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <p>正在載入系統組件...</p>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 日照系統 - 專為長者日間照顧中心設計</p>
+            <p>部署時間: <script>document.write(new Date().toLocaleString('zh-TW'));</script></p>
+        </div>
+    </div>
+
+    <script>
+        // 自動跳轉到主系統
+        setTimeout(function() {
+            document.getElementById('loading').style.display = 'block';
+            setTimeout(function() {
+                window.location.href = '/daycare_system/';
+            }, 2000);
+        }, 3000);
+    </script>
+</body>
+</html>
