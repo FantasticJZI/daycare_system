@@ -1,6 +1,15 @@
 import axios from 'axios';
+import { demoApi, setupDemoMode } from './demoApi';
+import { isDemoMode } from './mockData';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// 檢查是否在GitHub Pages環境中
+const isGitHubPages = window.location.hostname === 'fantasticjzi.github.io';
+const API_BASE_URL = isGitHubPages ? '/api' : (process.env.REACT_APP_API_URL || 'http://localhost:5000/api');
+
+// 設置演示模式
+if (isDemoMode()) {
+  setupDemoMode();
+}
 
 // 建立 axios 實例
 const api = axios.create({
@@ -38,14 +47,22 @@ api.interceptors.response.use(
 
 // 認證 API
 export const authAPI = {
-  login: (credentials: { email: string; password: string }) =>
-    api.post('/auth/login', credentials),
+  login: (credentials: { email: string; password: string }) => {
+    if (isDemoMode()) {
+      return demoApi.auth.login(credentials);
+    }
+    return api.post('/auth/login', credentials);
+  },
   
   register: (userData: any) =>
     api.post('/auth/register', userData),
   
-  getProfile: () =>
-    api.get('/auth/profile'),
+  getProfile: () => {
+    if (isDemoMode()) {
+      return demoApi.auth.getProfile();
+    }
+    return api.get('/auth/profile');
+  },
   
   updateProfile: (userData: any) =>
     api.put('/auth/profile', userData),
@@ -53,8 +70,12 @@ export const authAPI = {
   changePassword: (passwordData: { currentPassword: string; newPassword: string }) =>
     api.put('/auth/change-password', passwordData),
   
-  logout: () =>
-    api.post('/auth/logout'),
+  logout: () => {
+    if (isDemoMode()) {
+      return demoApi.auth.logout();
+    }
+    return api.post('/auth/logout');
+  },
   
   forgotPassword: (email: string) =>
     api.post('/auth/forgot-password', { email }),
@@ -65,8 +86,12 @@ export const authAPI = {
 
 // 長者 API
 export const elderlyAPI = {
-  getAll: (params?: any) =>
-    api.get('/elderly', { params }),
+  getAll: (params?: any) => {
+    if (isDemoMode()) {
+      return demoApi.elderly.getAll();
+    }
+    return api.get('/elderly', { params });
+  },
   
   getById: (id: string) =>
     api.get(`/elderly/${id}`),
@@ -80,8 +105,12 @@ export const elderlyAPI = {
   delete: (id: string) =>
     api.delete(`/elderly/${id}`),
   
-  getStats: () =>
-    api.get('/elderly/stats'),
+  getStats: () => {
+    if (isDemoMode()) {
+      return demoApi.elderly.getStats();
+    }
+    return api.get('/elderly/stats');
+  },
   
   addFamilyMember: (elderlyId: string, memberData: any) =>
     api.post(`/elderly/${elderlyId}/family`, memberData),

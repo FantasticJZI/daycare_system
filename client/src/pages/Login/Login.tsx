@@ -3,6 +3,7 @@ import { Box, Paper, TextField, Button, Typography, Alert, CircularProgress } fr
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../store/store';
 import { login, clearError } from '../../store/slices/authSlice';
+import { isDemoMode } from '../../utils/mockData';
 
 const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -49,6 +50,16 @@ const Login: React.FC = () => {
         <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
           長者日間照顧中心管理平台
         </Typography>
+        
+        {isDemoMode() && (
+          <Alert severity="info" sx={{ mb: 2 }}>
+            <Typography variant="body2">
+              <strong>演示模式</strong><br/>
+              帳號: admin@daycare.com<br/>
+              密碼: admin123
+            </Typography>
+          </Alert>
+        )}
         
         {error && (
           <Alert severity="error" sx={{ mb: 2 }} onClose={() => dispatch(clearError())}>
