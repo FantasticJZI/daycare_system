@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 
 const ElderlyDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  
+  // TODO: 使用id獲取長者詳細資料
+  console.log('Elderly ID:', id);
 
   return (
     <Box>

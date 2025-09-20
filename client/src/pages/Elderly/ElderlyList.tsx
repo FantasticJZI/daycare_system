@@ -7,7 +7,10 @@ import { fetchElderly } from '../../store/slices/elderlySlice';
 
 const ElderlyList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { elderly, loading, pagination } = useSelector((state: RootState) => state.elderly);
+  const { elderly } = useSelector((state: RootState) => state.elderly);
+  
+  // TODO: 使用loading和pagination狀態
+  // const { loading, pagination } = useSelector((state: RootState) => state.elderly);
 
   useEffect(() => {
     dispatch(fetchElderly({ page: 1, limit: 10 }));

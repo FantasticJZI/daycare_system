@@ -13,7 +13,6 @@ import {
   Person as PersonIcon,
   Assessment as AssessmentIcon,
   FamilyRestroom as FamilyIcon,
-  Menu as MenuIcon,
   Logout as LogoutIcon,
   AccountCircle as AccountCircleIcon
 } from '@mui/icons-material';
